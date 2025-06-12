@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>You're In!</title>
+  <meta http-equiv="refresh" content="2;url=main-website.html" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .progress-bar {
+      height: 8px;
+      width: 100%;
+      background-color: #d1fae5;
+      border-radius: 9999px;
+      overflow: hidden;
+      margin-top: 24px;
+    }
+
+    .progress-bar-inner {
+      height: 100%;
+      background-color: #10b981;
+      width: 0%;
+      transition: width 2s linear;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-green-50 to-white flex items-center justify-center min-h-screen px-4">
+
+  <div class="bg-white border border-green-200 rounded-3xl shadow-xl px-6 py-10 max-w-lg w-full text-center">
+    <h1 class="text-3xl md:text-4xl font-extrabold text-green-700 mb-4 tracking-tight">🎉Thank You!</h1>
+
+    <p class="text-gray-700 text-base md:text-lg mb-2">Your details are saved successfully.</p>
+    <p class="text-sm text-gray-500 mb-4">Redirecting to your earning dashboard...</p>
+
+    <div id="thoughtBox" class="bg-green-100 text-green-900 font-medium text-sm md:text-base italic px-5 py-4 rounded-2xl border border-green-300 shadow-inner transition-all duration-300">
+      “Success is loading...”
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-bar-inner" id="progress"></div>
+    </div>
+  </div>
+
+  <script>
+    const thoughts = [
+      "“Opportunities don't happen. You create them.”",
+      "“Start now. Perfection comes later.”",
+      "“Dreams don't work unless you do.”",
+      "“Do it for your future self.”",
+      "“One step today is better than a plan tomorrow.”",
+      "“Discipline beats motivation.”",
+      "“Chase consistency, not motivation.”",
+      "“Winners start where others stop.”",
+      "“Small steps → Big change.”",
+      "“Just 1% better every day.”",
+      "“Don’t wish for it. Work for it.”",
+      "“Make yourself proud today.”",
+      "“Silence your doubts with action.”",
+      "“Your time starts now.”",
+      "“Execution > Excuses.”",
+      "“No risk = No reward.”",
+      "“Get in, get started, get results.”",
+      "“Your future is created by what you do today.”"
+    ];
+    document.getElementById('thoughtBox').textContent = thoughts[Math.floor(Math.random() * thoughts.length)];
+
+    // Animate progress bar
+    setTimeout(() => {
+      document.getElementById('progress').style.width = "100%";
+    }, 100);
+  </script>
+</body>
+</html>

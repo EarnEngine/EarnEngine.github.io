@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join Us</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f0f9ff;
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .form-card {
+      background: white;
+      padding: 30px 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      border: 1px solid #dbeafe;
+    }
+
+    .form-card h2 {
+      margin-bottom: 24px;
+      color: #1e3a8a;
+      font-size: 24px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      border: 1px solid #cbd5e1;
+      border-radius: 9999px;
+      font-size: 15px;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px 16px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #1e40af;
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-card">
+    <h2>🚀 Get Started Now</h2>
+    <form id="submit-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="tel" name="number" placeholder="WhatsApp Number (10 digits)" pattern="[0-9]{10}" required />
+      <button type="submit">Submit ✅</button>
+    </form>
+    <div class="footer-note">We respect your privacy. No spam ever.</div>
+  </div>
+
+  <script>
+    const form = document.getElementById("submit-form");
+    const redirectURL = "thankyou.html"; // ✅ Replace with real URL
+    const scriptURL = "https://script.google.com/macros/s/AKfycbw8z1d7a619by3REisRpV8Si6Q6O5iBAMce341hKE2rquGB1bhPJoSzT0dluU1VSUUffQ/exec"; // ✅ Replace
+    const finalredirectURL = "main-website.html"
+
+    if (localStorage.getItem("formSubmitted") === "true") {
+      window.location.href = finalredirectURL;
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      fetch(scriptURL, {
+        method: 'POST',
+        body: new FormData(form)
+      })
+      .then(response => {
+        localStorage.setItem("formSubmitted", "true");
+        window.location.href = redirectURL;
+      })
+      .catch(error => {
+        alert("Something went wrong. Please try again!");
+        console.error(error);
+      });
+    });
+  </script>
+
+</body>
+</html>
